@@ -1,7 +1,6 @@
 package ru.job4j.oop;
 
 public class Jukebox {
-    @SuppressWarnings("checkstyle:EmptyStatement")
     public void music(int position) {
         switch (position) {
             case 1 -> System.out.println("Пусть бегут неуклюже");
