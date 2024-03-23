@@ -1,6 +1,6 @@
 package ru.job4j.tracker.output;
 
-public interface Output {
+public interface UserOutput {
 
     void println(Object object);
 }

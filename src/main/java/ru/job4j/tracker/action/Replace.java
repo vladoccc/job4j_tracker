@@ -1,15 +1,15 @@
 package ru.job4j.tracker.action;
 
-import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.UserInput;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
-import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.output.UserOutput;
 
 public class Replace implements UserAction {
 
-    private final Output output;
+    private final UserOutput output;
 
-    public Replace(Output output) {
+    public Replace(UserOutput output) {
         this.output = output;
     }
 
@@ -19,7 +19,7 @@ public class Replace implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(UserInput input, Tracker tracker) {
         output.println("=== Изменение заявки ===");
         int id = input.askInt("Введите id: ");
         String name = input.askString("Введите имя: ");

@@ -2,9 +2,9 @@ package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
 import ru.job4j.tracker.action.*;
-import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.UserInput;
 import ru.job4j.tracker.input.Mock;
-import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.output.UserOutput;
 import ru.job4j.tracker.output.Stub;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,11 +13,11 @@ class StartUITest {
 
     @Test
     void whenReplaceItemTestOutputIsSuccessfully() {
-        Output output = new Stub();
+        UserOutput output = new Stub();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
-        Input input = new Mock(
+        UserInput input = new Mock(
                 new String[]{"0", String.valueOf(one.getId()), replaceName, "1"}
         );
         UserAction[] actions = new UserAction[]{
@@ -41,10 +41,10 @@ class StartUITest {
 
     @Test
     void whenFindAllActionTestOutputIsSuccessfully() {
-        Output output = new Stub();
+        UserOutput output = new Stub();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
-        Input input = new Mock(
+        UserInput input = new Mock(
                 new String[]{"0", String.valueOf(one.getId()), "1"}
         );
         UserAction[] actions = new UserAction[]{
@@ -68,10 +68,10 @@ class StartUITest {
 
     @Test
     void whenFindByNameActionTestOutputIsSuccessfully() {
-        Output output = new Stub();
+        UserOutput output = new Stub();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
-        Input input = new Mock(
+        UserInput input = new Mock(
                 new String[]{"0", String.valueOf(one.getName()), "1"}
         );
         UserAction[] actions = new UserAction[]{
@@ -95,10 +95,10 @@ class StartUITest {
 
     @Test
     void whenFindByIdActionTestOutputIsSuccessfully() {
-        Output output = new Stub();
+        UserOutput output = new Stub();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
-        Input input = new Mock(
+        UserInput input = new Mock(
                 new String[]{"0", String.valueOf(one.getId()), "1"}
         );
         UserAction[] actions = new UserAction[]{

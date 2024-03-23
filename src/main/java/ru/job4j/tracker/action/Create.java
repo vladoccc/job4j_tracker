@@ -1,15 +1,15 @@
 package ru.job4j.tracker.action;
 
-import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.UserInput;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
-import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.output.UserOutput;
 
 public class Create implements UserAction {
 
-    private final Output output;
+    private final UserOutput output;
 
-    public Create(Output output) {
+    public Create(UserOutput output) {
         this.output = output;
     }
 
@@ -19,7 +19,7 @@ public class Create implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(UserInput input, Tracker tracker) {
         output.println("=== Создание заявки ===");
         String name = input.askString("Введите имя: ");
         Item item = new Item(name);

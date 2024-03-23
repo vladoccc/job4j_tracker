@@ -2,18 +2,18 @@ package ru.job4j.tracker;
 
 import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.Console;
-import ru.job4j.tracker.input.Input;
-import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.input.UserInput;
+import ru.job4j.tracker.output.UserOutput;
 
 public class StartUI {
 
-    private final Output output;
+    private final UserOutput output;
 
-    public StartUI(Output output) {
+    public StartUI(UserOutput output) {
         this.output = output;
     }
 
-    public void init(Input input, Tracker tracker, UserAction[] actions) {
+    public void init(UserInput input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
             showMenu(actions);
@@ -31,8 +31,8 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        Output output = new ru.job4j.tracker.output.Console();
-        Input input = new Console();
+        UserOutput output = new ru.job4j.tracker.output.Console();
+        UserInput input = new Console();
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new Create(output),
