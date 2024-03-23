@@ -1,4 +1,4 @@
-package ru.job4j.tracker.ru;
+package ru.job4j.tracker.output;
 
 public interface Output {
 
