@@ -1,14 +1,14 @@
 package ru.job4j.tracker.action;
 
-import ru.job4j.tracker.input.UserInput;
+import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.Tracker;
-import ru.job4j.tracker.output.UserOutput;
+import ru.job4j.tracker.output.Output;
 
-public class Exit implements UserAction {
+public class ExitAction implements UserAction {
 
-    private final UserOutput output;
+    private final Output output;
 
-    public Exit(UserOutput output) {
+    public ExitAction(Output output) {
         this.output = output;
     }
 
@@ -18,7 +18,7 @@ public class Exit implements UserAction {
     }
 
     @Override
-    public boolean execute(UserInput input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker) {
         output.println("=== Завершение программы ===");
         return false;
     }

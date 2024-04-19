@@ -1,15 +1,15 @@
 package ru.job4j.tracker.action;
 
-import ru.job4j.tracker.input.UserInput;
+import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
-import ru.job4j.tracker.output.UserOutput;
+import ru.job4j.tracker.output.Output;
 
-public class FindByName implements UserAction {
+public class FindByNameAction implements UserAction {
 
-    private final UserOutput output;
+    private final Output output;
 
-    public FindByName(UserOutput output) {
+    public FindByNameAction(Output output) {
         this.output = output;
     }
 
@@ -19,7 +19,7 @@ public class FindByName implements UserAction {
     }
 
     @Override
-    public boolean execute(UserInput input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker) {
         output.println("=== Вывод заявок по имени ===");
         String name = input.askString("Введите имя: ");
         Item[] items = tracker.findByName(name);
