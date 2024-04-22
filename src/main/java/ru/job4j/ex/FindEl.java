@@ -9,9 +9,9 @@ public class FindEl {
                 result = i;
                 break;
             }
-            if (result == -1) {
-                throw new ElementNotFoundException("Элемента в массиве нет.");
-            }
+        }
+        if (result == -1) {
+            throw new ElementNotFoundException("Элемента в массиве нет.");
         }
         return result;
     }
