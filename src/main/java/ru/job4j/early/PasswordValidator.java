@@ -11,12 +11,6 @@ public class PasswordValidator {
         if (password.length() < 8 || password.length() > 32) {
             throw new IllegalArgumentException("Password should be length [8, 32]");
         }
-        for (String value : FORBIDDEN) {
-            if (password.toLowerCase().contains(value)) {
-                throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, "
-                        + "12345, password, admin, user");
-            }
-        }
         boolean hasUpCase = false;
         boolean hasLowCase = false;
         boolean hasDigit = false;
@@ -33,6 +27,12 @@ public class PasswordValidator {
             }
             if (!Character.isLetterOrDigit(symbol)) {
                 hasSpecial = true;
+            }
+        }
+        for (String value : FORBIDDEN) {
+            if (password.toLowerCase().contains(value)) {
+                throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, "
+                        + "12345, password, admin, user");
             }
         }
         if (!hasUpCase) {
