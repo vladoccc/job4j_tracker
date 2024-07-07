@@ -7,6 +7,8 @@ import ru.job4j.tracker.input.MockInput;
 import ru.job4j.tracker.output.Output;
 import ru.job4j.tracker.output.StubOutput;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StartUITest {
@@ -15,15 +17,15 @@ class StartUITest {
     void whenReplaceItemTestOutputIsSuccessfully() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
-        Item one = tracker.add(new Item("test1"));
+        Item item = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input input = new MockInput(
-                new String[]{"0", String.valueOf(one.getId()), replaceName, "1"}
+                new String[]{"0", String.valueOf(item.getId()), replaceName, "1"}
         );
-        UserAction[] actions = new UserAction[]{
+        List<UserAction> actions = List.of(
                 new ReplaceAction(output),
                 new ExitAction(output)
-        };
+        );
         new StartUI(output).init(input, tracker, actions);
         String ln = System.lineSeparator();
         assertThat(output.toString()).isEqualTo(
@@ -43,14 +45,14 @@ class StartUITest {
     void whenFindAllActionTestOutputIsSuccessfully() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
-        Item one = tracker.add(new Item("test1"));
+        Item item = tracker.add(new Item("test1"));
         Input input = new MockInput(
-                new String[]{"0", String.valueOf(one.getId()), "1"}
+                new String[]{"0", String.valueOf(item.getId()), "1"}
         );
-        UserAction[] actions = new UserAction[]{
+        List<UserAction> actions = List.of(
                 new FindAllAction(output),
                 new ExitAction(output)
-        };
+        );
         new StartUI(output).init(input, tracker, actions);
         String ln = System.lineSeparator();
         assertThat(output.toString()).isEqualTo(
@@ -58,7 +60,7 @@ class StartUITest {
                         + "0. Показать все заявки" + ln
                         + "1. Завершить программу" + ln
                         + "=== Вывод всех заявок ===" + ln
-                        + one + ln
+                        + item + ln
                         + "Меню: " + ln
                         + "0. Показать все заявки" + ln
                         + "1. Завершить программу" + ln
@@ -70,14 +72,14 @@ class StartUITest {
     void whenFindByNameActionTestOutputIsSuccessfully() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
-        Item one = tracker.add(new Item("test1"));
+        Item item = tracker.add(new Item("test1"));
         Input input = new MockInput(
-                new String[]{"0", (one.getName()), "1"}
+                new String[]{"0", (item.getName()), "1"}
         );
-        UserAction[] actions = new UserAction[]{
+        List<UserAction> actions = List.of(
                 new FindByNameAction(output),
                 new ExitAction(output)
-        };
+        );
         new StartUI(output).init(input, tracker, actions);
         String ln = System.lineSeparator();
         assertThat(output.toString()).isEqualTo(
@@ -85,7 +87,7 @@ class StartUITest {
                         + "0. Показать заявки по имени" + ln
                         + "1. Завершить программу" + ln
                         + "=== Вывод заявок по имени ===" + ln
-                        + one + ln
+                        + item + ln
                         + "Меню: " + ln
                         + "0. Показать заявки по имени" + ln
                         + "1. Завершить программу" + ln
@@ -97,14 +99,14 @@ class StartUITest {
     void whenFindByIdActionTestOutputIsSuccessfully() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
-        Item one = tracker.add(new Item("test1"));
+        Item item = tracker.add(new Item("test1"));
         Input input = new MockInput(
-                new String[]{"0", String.valueOf(one.getId()), "1"}
+                new String[]{"0", String.valueOf(item.getId()), "1"}
         );
-        UserAction[] actions = new UserAction[]{
+        List<UserAction> actions = List.of(
                 new FindByIdAction(output),
                 new ExitAction(output)
-        };
+        );
         new StartUI(output).init(input, tracker, actions);
         String ln = System.lineSeparator();
         assertThat(output.toString()).isEqualTo(
@@ -112,7 +114,7 @@ class StartUITest {
                         + "0. Показать заявку по id" + ln
                         + "1. Завершить программу" + ln
                         + "=== Вывод заявки по id ===" + ln
-                        + one + ln
+                        + item + ln
                         + "Меню: " + ln
                         + "0. Показать заявку по id" + ln
                         + "1. Завершить программу" + ln
@@ -127,9 +129,9 @@ class StartUITest {
                 new String[]{"8", "0"}
         );
         Tracker tracker = new Tracker();
-        UserAction[] actions = new UserAction[]{
+        List<UserAction> actions = List.of(
                 new ExitAction(output)
-        };
+        );
         new StartUI(output).init(input, tracker, actions);
         String ln = System.lineSeparator();
         assertThat(output.toString()).isEqualTo(
