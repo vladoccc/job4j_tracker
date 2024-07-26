@@ -52,8 +52,8 @@ public class AnalyzeByMap {
                 score += subject.score();
             }
             info.add(new Label(pupil.name(), score));
-            info.sort(Comparator.naturalOrder());
         }
+        info.sort(Comparator.naturalOrder());
         return info.get(info.size() - 1);
     }
 
@@ -67,8 +67,8 @@ public class AnalyzeByMap {
         }
         for (String key : temp.keySet()) {
             score.add(new Label(key, (double) temp.get(key)));
-            score.sort(Comparator.naturalOrder());
         }
+        score.sort(Comparator.naturalOrder());
         return score.get(score.size() - 1);
     }
 }
