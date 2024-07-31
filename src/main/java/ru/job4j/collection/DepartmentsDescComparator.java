@@ -7,10 +7,7 @@ public class DepartmentsDescComparator implements Comparator<String> {
     public int compare(String left, String right) {
         String[] leftStr = left.split("/");
         String[] rightStr = right.split("/");
-        if ((rightStr[0]).equals(leftStr[0])) {
-            return left.compareTo(right);
-        } else {
-            return rightStr[0].compareTo(leftStr[0]);
-        }
+        int result = rightStr[0].compareTo(leftStr[0]);
+        return result != 0 ? result : left.compareTo(right);
     }
 }
