@@ -18,9 +18,9 @@ public class FunctionalInterfaces {
         biConsumer.accept(6, "six");
         biConsumer.accept(7, "seven");
 
-        Predicate<Integer> predicate = (key) -> key % 2 == 0 || map.get(key).length() == 4;
+        BiPredicate<Integer, String> biPredicate = (key, string) -> key % 2 == 0 || map.get(key).length() == 4;
         for (Integer key : map.keySet()) {
-            if (predicate.test(key)) {
+            if (biPredicate.test(key, map.get(key))) {
                 System.out.println("key: " + key + " value: " + map.get(key));
             }
         }
