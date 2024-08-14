@@ -35,7 +35,7 @@ public class AnalyzeByMap {
         List<Label> score = new ArrayList<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                temp.put(subject.name(), temp.getOrDefault(subject.name(), 0) + subject.score());
+                temp.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + subject.score());
             }
         }
         for (String key : temp.keySet()) {
@@ -62,7 +62,7 @@ public class AnalyzeByMap {
         List<Label> score = new ArrayList<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                temp.put(subject.name(), temp.getOrDefault(subject.name(), 0) + subject.score());
+                temp.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + subject.score());
             }
         }
         for (String key : temp.keySet()) {
