@@ -18,5 +18,6 @@ public class Profiles {
                 .sorted(Comparator.comparing(Address::getCity))
                 .distinct()
                 .collect(Collectors.toList());
+
     }
 }
